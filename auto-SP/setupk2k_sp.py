@@ -62,11 +62,7 @@ print('\nCreating group1')
 group1 = create_group(client, 'group1', domain1)
 
 print('\nCreating project fed-demo')
-<<<<<<< HEAD
 #project1 = create_project(client, 'fed-demo')
-=======
-project1 = create_project(client, 'fed-demo')
->>>>>>> merge_moc
 admin_project = client.projects.find(name='admin')
 
 print('\nCreating role Member')  
@@ -74,11 +70,7 @@ role1 = create_role(client, '_member_')
 
 print('\nGrant role Member to group1 in domain1')  
 client.roles.grant(role1, group=group1, domain=domain1)
-<<<<<<< HEAD
 #client.roles.grant(role1, group=group1, project=project1)
-=======
-client.roles.grant(role1, group=group1, project=project1)
->>>>>>> merge_moc
 client.roles.grant(role1, group=group1, project=admin_project)
 
 print('\nList group1 role assignments')  
