@@ -3,6 +3,7 @@
 
 require 'vagrant-openstack-provider'
 
+# script to deploy devstack kilo
 $script = <<SCRIPT
 # prep env and git clone
 sudo apt-get update 
@@ -14,6 +15,8 @@ git checkout stable/kilo
 sudo cp samples/local.conf .
 sudo chown -R ubuntu ../devstack
 sudo su ubuntu -c "./stack.sh"
+sudo su ubuntu
+cp /home/ubuntu/devstack/accrc/admin/admin ~
 SCRIPT
 
 require "yaml"
@@ -77,6 +80,11 @@ Vagrant.configure(2) do |config|
     # sync folder to vm
     devstack.vm.synced_folder "../auto-IdP", "/home/ubuntu/IdP"
     devstack.vm.synced_folder "../auto-SP", "/home/ubuntu/SP"
+
+    # setup environment variable using rc file
+    devstack.vm.provision :shell do |shell|
+      shell.path = "../modify_rcfile.sh"
+    end
  end
 
   # define Identity Provider (IDP)
@@ -111,5 +119,10 @@ Vagrant.configure(2) do |config|
     # sync folder to vm
     devstack.vm.synced_folder "../auto-IdP", "/home/ubuntu/IdP"
     devstack.vm.synced_folder "../auto-SP", "/home/ubuntu/SP"
+
+    # setup environment variable using rc file
+    devstack.vm.provision :shell do |shell|
+      shell.path = "../modify_rcfile.sh"
+    end
   end
 end
