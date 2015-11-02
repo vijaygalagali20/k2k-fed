@@ -43,40 +43,14 @@ Here I do `vagrant up` and `vagrant provision` seperately because I want two ip 
 
 ####4. ssh into the vms set up the environment
 
-This is a temporary solution, once its fully automated, vagrant will handel the change of rc file
+The vagrant script handles the set up of K2K on both IdP and SP, you only need to ssh in to the IdP and run the `/home/ubuntu/auto-IdP/k2k.sh` script and you will be able to see a scoped token of the Service provider generated for you.  
 
 If you are curious, the `Vagrantfile` is the recipe of automatically bring up two vms `k2k-idp` and `k2k-sp` note that the **server name does matter** so don't change it unless you know what you are doing. 
 
-**1st copy the openrc file for **both** idp and sp**
+**execute k2k fedration in Identity Provider and get a scoped token from SP** 
 
 ```
-cp ~/devstack/accrc/admin/admin ~
-```
-
-**IMPORTANT** you have to modify the accrc file to export OS_PROJECT_ID, OS_USER_ID and OS_AUTH_URL
-
-* `OS_PROJECT_ID` and `OS_USER_ID` are commented out in the admin rc file, you just need to export it
-* `OS_AUTH_URL` is set to /v2.0 right now, we want it to be /v3
-
-**2nd set up environment in Identity Provider**
-
-```
-cd ~/IdP
-source ~/admin
-./env.sh
-```
-
-3rd set up environment in Service Provider**
-
-```
-source ~/admin
-cd ~/SP
-./env.sh
-```
-
-**4th execute k2k fedration in Identity Provider and get a scoped token from SP** 
-
-```
+vagrant ssh k2k-idp
 source ~/admin
 cd ~/IdP
 ./k2k.sh
