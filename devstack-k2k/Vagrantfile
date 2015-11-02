@@ -20,23 +20,26 @@ SCRIPT
 
 # script to set up k2k in Service Provider
 $script_k2k_sp = <<SCRIPT
-sudo su ubuntu
+sudo su ubuntu <<'EOF'
 sudo chmod +x /vagrant/modify_rcfile.sh
-./vagrant/modify_rcfile.sh
-cd /home/ubuntu
-source admin
-./auto-SP/env.sh
+/vagrant/modify_rcfile.sh
+cd /home/ubuntu/auto-SP
+source /home/ubuntu/admin
+./env.sh
+EOF
 SCRIPT
 
 # script to set up k2k in Identity Provider
 $script_k2k_idp = <<SCRIPT
-sudo su ubuntu
+sudo su ubuntu <<'EOF'
 sudo chmod +x /vagrant/modify_rcfile.sh
-./vagrant/modify_rcfile.sh
-cd /home/ubuntu
-source admin
-./auto-IdP/env.sh
+/vagrant/modify_rcfile.sh
+cd /home/ubuntu/auto-IdP
+source /home/ubuntu/admin
+./env.sh
+EOF
 SCRIPT
+
 require "yaml"
 
 _config = YAML.load(File.open(File.join(File.dirname(__FILE__), "vagrantconfig.yaml"), File::RDONLY).read)

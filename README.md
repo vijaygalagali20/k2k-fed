@@ -39,13 +39,13 @@ vagrant up --no-provision
 vagrant provision
 ```
 
-Here I do `vagrant up` and `vagrant provision` seperately because I want two ip addresses that are right next to each other..If you don't care about that you can just run `vagrant up` without `--no-provision` flag and it will bring up two vms sequentially, in which case you **don't** have to run `vagrant provision`.
+**Here I spin up 2 vms individually first for the purpose of assinging ip addresses to each vm in order to finish the K2K setup**
 
-####4. ssh into the vms set up the environment
+####4. ssh into the vms and K2K
 
 The vagrant script handles the set up of K2K on both IdP and SP, you only need to ssh in to the IdP and run the `/home/ubuntu/auto-IdP/k2k.sh` script and you will be able to see a scoped token of the Service provider generated for you.  
 
-If you are curious, the `Vagrantfile` is the recipe of automatically bring up two vms `k2k-idp` and `k2k-sp` note that the **server name does matter** so don't change it unless you know what you are doing. 
+If you are curious, the `Vagrantfile` is the recipe of automatically bring up two vms `k2k-idp` and `k2k-sp`. Note that the **server name does matter** so don't change it unless you know what you are doing. 
 
 **execute k2k fedration in Identity Provider and get a scoped token from SP** 
 
