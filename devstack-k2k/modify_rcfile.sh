@@ -1,3 +1,5 @@
+#! /bin/sh
+
 USER_ID=$(grep "USER ID" /home/ubuntu/admin | awk -F' = ' '{print $2}')
 PROJECT_ID=$(grep "Tenant ID" /home/ubuntu/admin | awk -F' = ' '{print $2}')
 
