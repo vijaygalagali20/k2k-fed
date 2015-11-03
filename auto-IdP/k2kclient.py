@@ -144,8 +144,8 @@ def main():
     print('Unscoped token id: %s' % client.fed_token_id)
     print "==================SCOPE TOKEN================="
     project_list = client.list_federated_projects()
-    project_id = str(project_list[u'projects'][1][u'id'])
-    print('scope to project [%s]' % project_list[u'projects'][1]['name'])
+    project_id = str(project_list[u'projects'][0][u'id'])
+    print('scope to project [%s]' % project_list[u'projects'][0]['name'])
     print ('project id: %s' % project_id)
     client.scope_token(project_id=project_id)
     print('Scoped token id: %s' % client.scoped_token_id)
