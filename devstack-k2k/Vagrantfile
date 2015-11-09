@@ -23,7 +23,7 @@ $script_k2k_sp = <<SCRIPT
 sudo su ubuntu <<'EOF'
 sudo chmod +x /vagrant/modify_rcfile.sh
 /vagrant/modify_rcfile.sh
-cd /home/ubuntu/auto-SP
+cd /home/ubuntu/SP
 source /home/ubuntu/admin
 ./env.sh
 EOF
@@ -34,7 +34,7 @@ $script_k2k_idp = <<SCRIPT
 sudo su ubuntu <<'EOF'
 sudo chmod +x /vagrant/modify_rcfile.sh
 /vagrant/modify_rcfile.sh
-cd /home/ubuntu/auto-IdP
+cd /home/ubuntu/IdP
 source /home/ubuntu/admin
 ./env.sh
 EOF
