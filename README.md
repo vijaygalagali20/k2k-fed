@@ -41,7 +41,7 @@ vagrant provision
 
 **Here I spin up 2 vms individually first for the purpose of assinging ip addresses to each vm in order to finish the K2K setup**
 
-####4. ssh into the vms and K2K
+####4. ssh into the vms and establish K2K connection
 
 The vagrant script handles the set up of K2K on both IdP and SP, you only need to ssh in to the IdP and run the `/home/ubuntu/auto-IdP/k2k.sh` script and you will be able to see a scoped token of the Service provider generated for you.  
 
@@ -54,6 +54,15 @@ vagrant ssh k2k-idp
 source ~/admin
 cd ~/IdP
 ./k2k.sh
+```
+
+####5. Mix & Match (usecase 1: volume-attach & volume-detach)
+
+Assume you didn't exit IDP after the previous step
+i.e. you are still ssh-ed in k2k-idp vm 
+
+```
+cd /home/ubuntu/IdP && ./patch_nova.sh
 ```
 
 If you want more explainaion read through the rest of the README 
