@@ -1,7 +1,8 @@
 # change to your choice of flavor of vm
 # This is the flavor of the vm, i.e the size of the vm
 # This should be one of the options that are available on your cloud
-# for example "m1.tiny" 
+# IMPORTANT: You need at least 4G of RAM and 1 Core for devstack
+# for example "lg.2core" 
 flavor: ""
 
 # change to your choice of ubuntu image

@@ -33,6 +33,10 @@ Make sure you have `auto-IdP`, `auto-SP` and `devstack-k2k`, within the same fol
 
 ####3. vagrant up
 
+This will take ~40 minutes, because we have to provision the two vms in sequence, because the script to set up IdP and SP has to be run in order...
+
+**(Maybe a) TODO:** parallel the devstack provisioning and then run the scripts in sequence
+
 ```
 cd devstack-k2k
 vagrant up --no-provision
@@ -41,7 +45,9 @@ vagrant provision
 
 **Here I spin up 2 vms individually first for the purpose of assinging ip addresses to each vm in order to finish the K2K setup**
 
-####4. ssh into the vms and establish K2K connection
+####4. ssh into the vms and establish K2K connection (TO BE DEPRECRATED)
+
+**TODO:** script this step to make life easier 
 
 The vagrant script handles the set up of K2K on both IdP and SP, you only need to ssh in to the IdP and run the `/home/ubuntu/auto-IdP/k2k.sh` script and you will be able to see a scoped token of the Service provider generated for you.  
 
@@ -66,6 +72,8 @@ cd /home/ubuntu/IdP && ./patch_nova.sh
 ```
 
 If you want more explainaion read through the rest of the README 
+
+## 
 
 ### 2-way automation
 
