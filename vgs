@@ -1,0 +1,37 @@
+#!bin/bash
+#AUTHOR:vijay galagali
+#DATE:16-3-2017
+#SCRIPT:SHELLSCRIPT
+
+
+sudo apt-get update 
+sudo apt-get install -y git vim 
+#home
+HMPAT=$(cd && env pwd|awk '{print $1}')
+#git clone https://github.com/openstack-dev/devstack.git devstack
+#
+read -p "Ente Devstack Directory path ${HMPAT}/ :" DEVPATH2
+DVPATH="${HMPAT}/${DEVPATH2}"
+echo "destack path is: $DVPATH"
+# Build DevStack
+#sudo cp samples/local.conf .
+#sudo chown -R ubuntu ../devstack
+#sudo su ubuntu -c "./stack.sh"
+#cp /home/ubuntu/devstack/accrc/admin/admin /home/ubuntu
+
+cd $DVPATH
+source openrc admin admin
+USER_ID3=$(grep "USER ID" ~/admin | awk -F' = ' '{print $2}')
+PROJECT_ID3=$(grep "project ID" ~/admin | awk -F' = ' '{print $2}')
+sed -i "/USER ID/a export OS_USER_ID=${USER_ID3}" ~/admin
+sed -i "/project ID/a export OS_PROJECT_ID=${PROJECT_ID3}" ~/admin
+sed -i -e 's/v2.0/v3/g' ~/admin
+source openrc admin admin && source ~/admin
+
+#k2k feds 
+read -p "Ente SP path ${HMPAT}/ :" SPPATH3
+SPPATH="${HMPAT}/${SPPATH3}"
+echo "SP path is: $SPPATH"
+cd ~SP
+source /home/ubuntu/admin
+./env.sh
