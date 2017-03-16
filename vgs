@@ -2,7 +2,9 @@
 #AUTHOR:vijay galagali
 #DATE:16-3-2017
 #SCRIPT:SHELLSCRIPT
+#PLATFORM:LINUX/UBUNTU 16
 
+clear
 read -p "Ente Sudo password :" SUPWD
 sudo apt-get update 
 sudo apt-get install -y git vim 
